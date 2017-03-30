@@ -1,8 +1,8 @@
 {
-  "name": "{{ name }}",
+  "name": "nuxtstarter",
   "version": "1.0.0",
-  "description": "{{ description }}",
-  "author": "{{ author }}",
+  "description": "nuxt description",
+  "author": "Shay Doherty",
   "private": true,
   "dependencies": {
     "nuxt": "latest"
