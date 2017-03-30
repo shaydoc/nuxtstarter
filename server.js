@@ -20,4 +20,4 @@ if (config.dev) {
 }
 
 server = new nuxt.Server(nuxt)
-server.listen()
+server.listen(80)
