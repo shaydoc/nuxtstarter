@@ -15,7 +15,7 @@ if (typeof options.rootDir !== 'string') {
 options.dev = false // Force production mode (no webpack middleware called)
 
 var nuxt = new Nuxt(options)
-
+//updating and hopefully works
 new nuxt.Server(nuxt)
   .listen(
     process.env.PORT || process.env.npm_package_config_nuxt_port,
