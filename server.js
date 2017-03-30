@@ -1,23 +1,23 @@
-const Nuxt = require('nuxt')
-const host = process.env.HOST || '127.0.0.1'
-const port = process.env.PORT || 3000
+var fs = require('fs')
+var Nuxt = require('nuxt')
+var resolve = require('path').resolve
 
-// Import and Set Nuxt.js options
-let config = require('./nuxt.config.js')
-config.dev = true //!(process.env.NODE_ENV === 'production')
+var rootDir = resolve('.')
+var nuxtConfigFile = resolve(rootDir, 'nuxt.config.js')
 
-// Init Nuxt.js
-const nuxt = new Nuxt(config)
-//app.use(nuxt.render)
+var options = {}
+if (fs.existsSync(nuxtConfigFile)) {
+  options = require(nuxtConfigFile)
+}
+if (typeof options.rootDir !== 'string') {
+  options.rootDir = rootDir
+}
+options.dev = false // Force production mode (no webpack middleware called)
 
-// Build only in dev mode
-/*if (config.dev) {
-  nuxt.build()
-  .catch((error) => {
-    console.error(error) // eslint-disable-line no-console
-    process.exit(1)
-  })
-}*/
+var nuxt = new Nuxt(options)
 
-server = new nuxt.Server(nuxt)
-server.listen(port)
+new nuxt.Server(nuxt)
+  .listen(
+    process.env.PORT || process.env.npm_package_config_nuxt_port,
+    process.env.HOST || process.env.npm_package_config_nuxt_host
+)
