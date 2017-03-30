@@ -11,13 +11,13 @@ const nuxt = new Nuxt(config)
 //app.use(nuxt.render)
 
 // Build only in dev mode
-if (config.dev) {
+/*if (config.dev) {
   nuxt.build()
   .catch((error) => {
     console.error(error) // eslint-disable-line no-console
     process.exit(1)
   })
-}
+}*/
 
 server = new nuxt.Server(nuxt)
-server.listen(80)
+server.listen(port)
